@@ -24,8 +24,10 @@ const RecentlyViewedCard: React.FC<RecentlyViewedCardProps> = ({
 }) => (
   <View style={viewStyles.recentlyViewedCard}>
     <Image source={{ uri: image }} style={viewStyles.recentlyViewedImage} />
-    <Text style={textStyles.recentlyViewedCardTitle}>{title}</Text>
-    <Text style={textStyles.recentlyViewedProgress}>{progress}</Text>
+    <View style={{ padding: 8 }}>
+      <Text style={textStyles.recentlyViewedCardTitle}>{title}</Text>
+      <Text style={textStyles.recentlyViewedProgress}>{progress}</Text>
+    </View>
   </View>
 );
 

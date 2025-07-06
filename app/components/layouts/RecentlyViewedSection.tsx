@@ -1,7 +1,7 @@
 import RecentlyViewedCard from '@/components/RecentlyViewedCard';
 import { Colors } from '@/constants/Colors';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const spacing = { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 40 };
 const radii = { none: 0, sm: 4, md: 8, lg: 16, xl: 24, pill: 9999 };
@@ -14,7 +14,7 @@ const typography = {
 
 const recentlyViewed = [
   {
-    image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99',
+    image: 'https://images.unsplash.com/photo-1462007895615-c8c073bebcd8',
     title: 'Night in the City',
     progress: '70% complete',
   },
@@ -22,6 +22,16 @@ const recentlyViewed = [
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
     title: 'Summer Memories',
     progress: '45% complete',
+  },
+  {
+    image: 'https://plus.unsplash.com/premium_photo-1661963952208-2db3512ef3de',
+    title: 'Romans Empire',
+    progress: '35% complete',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1506372023823-741c83b836fe',
+    title: 'Coffee Shop Conversations',
+    progress: '10% complete',
   },
 ];
 
@@ -42,6 +52,7 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   recentlyViewedCard: {
+    width: 180,
     flex: 1,
     backgroundColor: Colors.surface,
     borderRadius: radii.md,
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
   },
   recentlyViewedImage: {
     width: '100%',
-    height: 80,
+    height: 120,
   },
   recentlyViewedCardTitle: {
     color: Colors.onBackground,
@@ -70,7 +81,7 @@ const styles = StyleSheet.create({
 const RecentlyViewedSection: React.FC = () => (
   <View style={styles.recentlyViewedSection}>
     <Text style={styles.recentlyViewedTitle}>Recently Viewed</Text>
-    <View style={styles.recentlyViewedRow}>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentlyViewedRow}>
       {recentlyViewed.map((item) => (
         <RecentlyViewedCard
           key={item.title}
@@ -87,7 +98,7 @@ const RecentlyViewedSection: React.FC = () => (
           }}
         />
       ))}
-    </View>
+    </ScrollView>
   </View>
 );
 

@@ -72,7 +72,7 @@ export default function Home() {
     <View style={{ flex: 1 }}>
       <ScrollView
         style={viewStyles.container}
-        contentContainerStyle={viewStyles.contentContainer}
+        contentContainerStyle={[viewStyles.contentContainer, { paddingBottom: 160 }]}
       >
         <Header />
         <CategoriesBar
