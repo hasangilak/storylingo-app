@@ -23,4 +23,19 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
   },
+
+  primary: '#3B82F6',
+  primaryVariant: '#2563EB',
+  secondary: '#F59E42',
+  secondaryVariant: '#FBBF24',
+  background: '#181A20', // dark background
+  surface: '#23262F',    // card background
+  error: '#EF4444',
+  onPrimary: '#FFFFFF',
+  onSecondary: '#1F2937',
+  onBackground: '#FFFFFF',
+  onSurface: '#E5E7EB',
+  onError: '#FFFFFF',
+  border: '#353945',
+  shadow: 'rgba(0,0,0,0.16)'
 };
