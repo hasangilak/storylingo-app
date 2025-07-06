@@ -1,42 +1,56 @@
-import FeaturedCard from '@/components/FeaturedCard';
-import { Colors } from '@/constants/Colors';
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import CategoriesBar from './layouts/CategoriesBar';
-import Header from './layouts/Header';
-import RecentlyViewedSection from './layouts/RecentlyViewedSection';
+import FeaturedCard from "@/components/FeaturedCard";
+import { Colors } from "@/constants/Colors";
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import CategoriesBar from "./layouts/CategoriesBar";
+import Header from "./layouts/Header";
+import RecentlyViewedSection from "./layouts/RecentlyViewedSection";
 
 const spacing = { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 40 };
 const radii = { none: 0, sm: 4, md: 8, lg: 16, xl: 24, pill: 9999 };
 const typography = {
   fontFamily: "Inter, 'Space Mono', Arial, sans-serif",
-  fontWeight: { regular: '400', medium: '500', bold: '700' },
-  fontSize: { display: 32, headline: 24, title: 20, subtitle: 16, body: 14, caption: 12 },
-  lineHeight: { display: 40, headline: 32, title: 28, subtitle: 24, body: 20, caption: 16 }
+  fontWeight: { regular: "400", medium: "500", bold: "700" },
+  fontSize: {
+    display: 32,
+    headline: 24,
+    title: 20,
+    subtitle: 16,
+    body: 14,
+    caption: 12,
+  },
+  lineHeight: {
+    display: 40,
+    headline: 32,
+    title: 28,
+    subtitle: 24,
+    body: 20,
+    caption: 16,
+  },
 };
 
-const TABS = ['Novels', 'Stories', 'Dialogues', 'Vocal'];
+const TABS = ["Novels", "Stories", "Dialogues", "Vocal"];
 const featuredCards = [
   {
-    badge: 'Popular',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-    title: 'The Alchemist',
-    meta: ['Novel Summary', 'Intermediate'],
-    info: '15 min audio · English - Spanish',
+    badge: "Popular",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    title: "The Alchemist",
+    meta: ["Novel Summary", "Intermediate"],
+    info: "15 min audio · English - Spanish",
   },
   {
-    badge: 'Audio',
-    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2',
-    title: 'Coffee Shop Conversations',
-    meta: ['Daily Dialogue', 'Beginner'],
-    info: '10 min read · New',
+    badge: "Audio",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+    title: "Coffee Shop Conversations",
+    meta: ["Daily Dialogue", "Beginner"],
+    info: "10 min read · New",
   },
   {
-    badge: 'Featured',
-    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
-    title: 'The Secret Library',
-    meta: ['Mystery', 'Advanced'],
-    info: '20 min read · 30% complete',
+    badge: "Featured",
+    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
+    title: "The Secret Library",
+    meta: ["Mystery", "Advanced"],
+    info: "20 min read · 30% complete",
   },
 ];
 
@@ -50,15 +64,15 @@ const viewStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     padding: spacing.lg,
     paddingTop: spacing.xl,
   },
   headerLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   avatar: {
     width: 44,
@@ -68,15 +82,15 @@ const viewStyles = StyleSheet.create({
     marginRight: spacing.md,
   },
   headerText: {
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   iconRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: spacing.md,
   },
   tabBar: {
-    flexDirection: 'row',
+    flexDirection: "row",
     backgroundColor: Colors.surface,
     borderRadius: radii.lg,
     marginHorizontal: spacing.lg,
@@ -86,7 +100,7 @@ const viewStyles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: spacing.sm,
     borderRadius: radii.md,
   },
@@ -94,14 +108,14 @@ const viewStyles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   tabInactive: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   featuredCard: {
     backgroundColor: Colors.surface,
     borderRadius: radii.lg,
     marginHorizontal: spacing.lg,
     marginBottom: spacing.lg,
-    overflow: 'hidden',
+    overflow: "hidden",
     shadowColor: Colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.16,
@@ -109,11 +123,11 @@ const viewStyles = StyleSheet.create({
     elevation: 2,
   },
   featuredImage: {
-    width: '100%',
+    width: "100%",
     height: 160,
   },
   badge: {
-    position: 'absolute',
+    position: "absolute",
     top: spacing.md,
     left: spacing.md,
     backgroundColor: Colors.primary,
@@ -126,13 +140,13 @@ const viewStyles = StyleSheet.create({
     padding: spacing.lg,
   },
   metaRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: spacing.sm,
     marginBottom: spacing.sm,
   },
   infoRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: spacing.sm,
     marginBottom: spacing.sm,
   },
@@ -144,38 +158,38 @@ const viewStyles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   recentlyViewedRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: spacing.md,
   },
   recentlyViewedCard: {
     flex: 1,
     backgroundColor: Colors.surface,
     borderRadius: radii.md,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginRight: spacing.md,
   },
   recentlyViewedImage: {
-    width: '100%',
+    width: "100%",
     height: 80,
   },
   bottomNav: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     bottom: 0,
-    flexDirection: 'row',
+    flexDirection: "row",
     backgroundColor: Colors.surface,
     borderTopLeftRadius: radii.xl,
     borderTopRightRadius: radii.xl,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.lg,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
     elevation: 10,
   },
   navItem: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   navCenter: {
     backgroundColor: Colors.primary,
@@ -189,19 +203,19 @@ const textStyles = StyleSheet.create({
   appName: {
     color: Colors.onBackground,
     fontSize: typography.fontSize.title,
-    fontWeight: '700',
+    fontWeight: "700",
     fontFamily: typography.fontFamily,
   },
   subtitle: {
     color: Colors.onSurface,
     fontSize: typography.fontSize.body,
-    fontWeight: '400',
+    fontWeight: "400",
     fontFamily: typography.fontFamily,
   },
   tab: {
     color: Colors.onSurface,
     fontSize: typography.fontSize.body,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
   },
   tabActive: {
@@ -210,22 +224,22 @@ const textStyles = StyleSheet.create({
   badge: {
     color: Colors.onPrimary,
     fontSize: typography.fontSize.caption,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
   },
   cardTitle: {
     color: Colors.onBackground,
     fontSize: typography.fontSize.headline,
-    fontWeight: '700',
+    fontWeight: "700",
     fontFamily: typography.fontFamily,
     marginBottom: spacing.sm,
   },
   meta: {
     color: Colors.primary,
     fontSize: typography.fontSize.caption,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
-    backgroundColor: 'rgba(59,130,246,0.08)',
+    backgroundColor: "rgba(59,130,246,0.08)",
     borderRadius: radii.sm,
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xs,
@@ -233,32 +247,32 @@ const textStyles = StyleSheet.create({
   info: {
     color: Colors.onSurface,
     fontSize: typography.fontSize.caption,
-    fontWeight: '400',
+    fontWeight: "400",
     fontFamily: typography.fontFamily,
   },
   recentlyViewedTitle: {
     color: Colors.onSurface,
     fontSize: typography.fontSize.subtitle,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
   },
   recentlyViewedCardTitle: {
     color: Colors.onBackground,
     fontSize: typography.fontSize.body,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
     marginTop: spacing.xs,
   },
   recentlyViewedProgress: {
     color: Colors.primary,
     fontSize: typography.fontSize.caption,
-    fontWeight: '400',
+    fontWeight: "400",
     fontFamily: typography.fontFamily,
   },
   navLabel: {
     color: Colors.onSurface,
     fontSize: typography.fontSize.caption,
-    fontWeight: '500',
+    fontWeight: "500",
     fontFamily: typography.fontFamily,
     marginTop: spacing.xs,
   },
@@ -271,9 +285,16 @@ export default function Home() {
   const [activeTab, setActiveTab] = React.useState(0);
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={viewStyles.container} contentContainerStyle={viewStyles.contentContainer}>
+      <ScrollView
+        style={viewStyles.container}
+        contentContainerStyle={viewStyles.contentContainer}
+      >
         <Header />
-        <CategoriesBar TABS={TABS} activeTab={activeTab} setActiveTab={setActiveTab} viewStyles={viewStyles} textStyles={textStyles} />
+        <CategoriesBar
+          TABS={TABS}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
         {featuredCards.map((card) => (
           <FeaturedCard
             key={card.title}
@@ -290,4 +311,4 @@ export default function Home() {
       </ScrollView>
     </View>
   );
-} 
+}

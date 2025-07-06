@@ -1,4 +1,6 @@
 import { Colors } from '@/constants/Colors';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -14,10 +16,14 @@ const typography = {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: spacing.lg,
-    paddingTop: spacing.xl
+    backgroundColor: Colors.surface,
+    borderRadius: radii.lg,
+    marginHorizontal: spacing.lg,
+    marginBottom: spacing.md,
+    padding: spacing.xs,
+    paddingHorizontal: spacing.md,
+    gap: spacing.sm,
+    marginTop: spacing.xxl,
   },
   headerLeft: {
     flexDirection: 'row',
@@ -34,9 +40,23 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   iconRow: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
+    justifyContent: 'flex-end',
+  },
+  iconGlass: {
+    width: 36,
+    height: 36,
+    borderRadius: radii.md,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.sm,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.15)',
   },
   appName: {
     color: Colors.onBackground,
@@ -54,6 +74,7 @@ const styles = StyleSheet.create({
 
 const Header: React.FC = () => (
   <View style={styles.header}>
+    <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
     <View style={styles.headerLeft}>
       <View style={styles.avatar} />
       <View style={styles.headerText}>
@@ -62,9 +83,14 @@ const Header: React.FC = () => (
       </View>
     </View>
     <View style={styles.iconRow}>
-      {/* Placeholder icons */}
-      <View style={{ width: 28, height: 28, backgroundColor: Colors.surface, borderRadius: 8, marginRight: spacing.sm }} />
-      <View style={{ width: 28, height: 28, backgroundColor: Colors.surface, borderRadius: 8 }} />
+      <View style={styles.iconGlass}>
+        <BlurView intensity={30} tint="light" style={StyleSheet.absoluteFill} />
+        <Ionicons name="notifications-outline" size={22} color={Colors.onSurface} />
+      </View>
+      <View style={[styles.iconGlass, { marginRight: 0 }]}> 
+        <BlurView intensity={30} tint="light" style={StyleSheet.absoluteFill} />
+        <MaterialIcons name="settings" size={22} color={Colors.onSurface} />
+      </View>
     </View>
   </View>
 );
