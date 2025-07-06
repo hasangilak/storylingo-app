@@ -1,6 +1,6 @@
 import { Colors } from '@/constants/Colors';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const spacing = { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 40 };
 const radii = { none: 0, sm: 4, md: 8, lg: 16, xl: 24, pill: 9999 };
@@ -19,13 +19,12 @@ const styles = StyleSheet.create({
     marginHorizontal: spacing.lg,
     marginBottom: spacing.md,
     padding: spacing.xs,
-    gap: spacing.sm,
   },
   tab: {
-    flex: 1,
     alignItems: 'center',
     paddingVertical: spacing.sm,
     borderRadius: radii.md,
+    paddingHorizontal: spacing.lg,
   },
   tabActive: {
     backgroundColor: Colors.primary,
@@ -52,15 +51,21 @@ interface CategoriesBarProps {
 
 const CategoriesBar: React.FC<CategoriesBarProps> = ({ TABS, activeTab, setActiveTab }) => (
   <View style={styles.tabBar}>
-    {TABS.map((tab, idx) => (
-      <TouchableOpacity
-        key={tab}
-        style={[styles.tab, activeTab === idx ? styles.tabActive : styles.tabInactive]}
-        onPress={() => setActiveTab(idx)}
-      >
-        <Text style={[styles.tabText, activeTab === idx && styles.tabTextActive]}>{tab}</Text>
-      </TouchableOpacity>
-    ))}
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexDirection: 'row' }}>
+      {TABS.map((tab, idx) => (
+        <TouchableOpacity
+          key={tab}
+          style={[
+            styles.tab,
+            activeTab === idx ? styles.tabActive : styles.tabInactive,
+            idx !== TABS.length - 1 && { marginRight: spacing.sm },
+          ]}
+          onPress={() => setActiveTab(idx)}
+        >
+          <Text style={[styles.tabText, activeTab === idx && styles.tabTextActive]}>{tab}</Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
   </View>
 );
 
