@@ -1,20 +1,8 @@
 import React from 'react';
-import { Image, ImageStyle, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
-interface RecentlyViewedCardProps {
-  image: string;
-  title: string;
-  progress: string;
-  viewStyles: {
-    recentlyViewedCard: StyleProp<ViewStyle>;
-    recentlyViewedImage: StyleProp<ImageStyle>;
-  };
-  textStyles: {
-    recentlyViewedCardTitle: StyleProp<TextStyle>;
-    recentlyViewedProgress: StyleProp<TextStyle>;
-  };
-}
-
+import type { RecentlyViewedCardProps } from './RecentlyViewedCard.types';
+  
 const RecentlyViewedCard: React.FC<RecentlyViewedCardProps> = ({
   image,
   title,

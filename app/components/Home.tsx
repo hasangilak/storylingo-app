@@ -1,7 +1,8 @@
-import FeaturedCard from "@/components/FeaturedCard";
-import { Colors } from "@/constants/Colors";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
+
+import FeaturedCard from "@/components/FeaturedCard/FeaturedCard";
+import { Colors } from "@/constants/Colors";
 import CategoriesBar from "./layouts/CategoriesBar";
 import Header from "./layouts/Header";
 import RecentlyViewedSection from "./layouts/RecentlyViewedSection";
