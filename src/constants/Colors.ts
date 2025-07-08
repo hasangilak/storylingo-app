@@ -29,7 +29,7 @@ export const Colors = {
   secondary: '#F59E42',
   secondaryVariant: '#FBBF24',
   background: '#181A20', // dark background
-  surface: '#23262F',    // card background
+  surface: '#23262F', // card background
   error: '#EF4444',
   onPrimary: '#FFFFFF',
   onSecondary: '#1F2937',
@@ -37,5 +37,5 @@ export const Colors = {
   onSurface: '#E5E7EB',
   onError: '#FFFFFF',
   border: '#353945',
-  shadow: 'rgba(0,0,0,0.16)'
+  shadow: 'rgba(0,0,0,0.16)',
 };

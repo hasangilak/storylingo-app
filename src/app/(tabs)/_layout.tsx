@@ -7,11 +7,27 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const TAB_ICONS = [
-  { name: 'home', label: 'Home', icon: (color: string) => <Ionicons name="home" size={24} color={color} /> },
-  { name: 'ask', label: 'Ask', icon: (color: string) => <MaterialIcons name="menu-book" size={24} color={color} /> },
+  {
+    name: 'home',
+    label: 'Home',
+    icon: (color: string) => <Ionicons name="home" size={24} color={color} />,
+  },
+  {
+    name: 'ask',
+    label: 'Ask',
+    icon: (color: string) => <MaterialIcons name="menu-book" size={24} color={color} />,
+  },
   { name: 'center', label: '', icon: null, isCenter: true },
-  { name: 'practice', label: 'Practice', icon: (color: string) => <MaterialIcons name="translate" size={24} color={color} /> },
-  { name: 'profile', label: 'Profile', icon: (color: string) => <Ionicons name="person" size={24} color={color} /> },
+  {
+    name: 'practice',
+    label: 'Practice',
+    icon: (color: string) => <MaterialIcons name="translate" size={24} color={color} />,
+  },
+  {
+    name: 'profile',
+    label: 'Profile',
+    icon: (color: string) => <Ionicons name="person" size={24} color={color} />,
+  },
 ];
 
 function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -58,7 +74,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 export default function TabLayout() {
   return (
     <Tabs
-      tabBar={props => <CustomTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
         tabBarStyle: { display: 'none' },

@@ -1,4 +1,4 @@
-import { ImageStyle, StyleProp, TextStyle, ViewStyle } from "react-native";
+import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface RecentlyViewedCardProps {
   image: string;

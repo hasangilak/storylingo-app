@@ -6,13 +6,16 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-na
 import { styles } from './FeaturedCard.styles';
 import type { FeaturedCardProps } from './FeaturedCard.types';
 
-const FeaturedCard: React.FC<FeaturedCardProps> = ({
-  image,
-  badge,
-  title,
-  meta,
-  info,
-}) => {
+/**
+ * FeaturedCard component displays an image, badge, title, meta info, and additional info.
+ *
+ * @param {string} image - The image URL to display.
+ * @param {string} badge - The badge text to display.
+ * @param {string} title - The title of the card.
+ * @param {string[]} meta - Array of meta information strings.
+ * @param {string} info - Additional info to display.
+ */
+const FeaturedCard: React.FC<FeaturedCardProps> = ({ image, badge, title, meta, info }) => {
   const scale = useSharedValue(0.95);
 
   React.useEffect(() => {
@@ -25,14 +28,19 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
 
   return (
     <Pressable
-      onPressIn={() => { scale.value = withSpring(0.97); }}
-      onPressOut={() => { scale.value = withSpring(1); }}
+      accessibilityRole="button"
+      onPressIn={() => {
+        scale.value = withSpring(0.97);
+      }}
+      onPressOut={() => {
+        scale.value = withSpring(1);
+      }}
       style={{ flex: 1 }}
     >
       <Animated.View style={[styles.featuredCard, animatedStyle]}>
         <Image source={{ uri: image }} style={styles.featuredImage} />
         <LinearGradient
-          colors={["rgba(0,0,0,1)", "rgba(0,0,0,0.0)"]}
+          colors={['rgba(0,0,0,1)', 'rgba(0,0,0,0.0)']}
           start={{ x: 1, y: 1 }}
           end={{ x: 1, y: 0 }}
           style={StyleSheet.absoluteFill}
@@ -45,7 +53,9 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
           <Text style={styles.cardTitle}>{title}</Text>
           <View style={styles.metaRow}>
             {meta.map((m) => (
-              <Text key={m} style={styles.meta}>{m}</Text>
+              <Text key={m} style={styles.meta}>
+                {m}
+              </Text>
             ))}
           </View>
           <Text style={styles.info}>{info}</Text>
@@ -55,4 +65,4 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
   );
 };
 
-export default FeaturedCard; 
+export default FeaturedCard;

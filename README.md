@@ -1,50 +1,67 @@
-# Welcome to your Expo app 👋
+# StoryLingo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern React Native + Expo app using TypeScript, centralized design tokens, ESLint, Prettier, Husky pre-commit hooks, and @ alias for imports.
 
-## Get started
+## Project Setup
 
-1. Install dependencies
+1. **Install dependencies:**
 
-   ```bash
+   ```sh
    npm install
    ```
 
-2. Start the app
+2. **Start the development server:**
 
-   ```bash
-   npx expo start
+   ```sh
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+   or
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```sh
+   expo start
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+3. **Run on device or simulator:**
+   - Use the Expo Go app on your device, or an emulator/simulator.
 
-## Get a fresh project
+## Scripts
 
-When you're ready, run:
+- `npm start` / `expo start` — Start the Expo development server
+- `npm run lint` — Run ESLint
+- `npm run tsc` — Type-check the codebase
+- `npm test` — Run tests with Jest
+- `npm run coverage` — Run tests with coverage report
 
-```bash
-npm run reset-project
-```
+## Code Quality & Automation
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Linting & Formatting:**
+  - ESLint and Prettier are enforced via scripts and pre-commit hooks (Husky + lint-staged)
+  - All staged files are automatically linted and formatted before commit
+- **Type Safety:**
+  - TypeScript strict mode is enabled
+  - All components and functions use explicit types and interfaces
+- **Testing:**
+  - Jest and React Native Testing Library are set up for unit and integration tests
+  - Run `npm test` to execute tests, and `npm run coverage` for coverage reports
+- **CI/CD:**
+  - GitHub Actions workflow runs lint, type-check, and tests on every push and pull request
 
-## Learn more
+## Development Workflow
 
-To learn more about developing your project with Expo, look at the following resources:
+- All source code is under `src/` (except `assets/` and `designs/`)
+- Use the `@` alias for imports from `src/` (e.g., `import X from '@/components/X'`)
+- Design tokens (spacing, radii, typography) are centralized in `src/constants/tokens.ts`
+- Error boundaries are used for robust error handling
+- Accessibility best practices are followed for interactive elements
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Onboarding & Contributing
 
-## Join the community
+- See `ONBOARDING.md` for a quickstart guide for new contributors
+- Fork the repo and create a new branch for your feature or fix
+- Run `npm run lint` and commit only after passing pre-commit checks
+- Add or update tests as needed
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+For more details, see the code comments and the `tasks/REVIEW_TASKS_YYYY-MM-DD.md` file for ongoing improvements.

@@ -7,4 +7,4 @@ config.resolver.alias = {
   '@': path.resolve(__dirname, 'src'),
 };
 
-module.exports = config; 
+module.exports = config;

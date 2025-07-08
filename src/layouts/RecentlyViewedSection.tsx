@@ -1,18 +1,9 @@
-
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import RecentlyViewedCard from '@/components/RecentlyViewedCard/RecentlyViewedCard';
 import { Colors } from '@/constants/Colors';
-
-const spacing = { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 40 };
-const radii = { none: 0, sm: 4, md: 8, lg: 16, xl: 24, pill: 9999 };
-const typography = {
-  fontFamily: "Inter, 'Space Mono', Arial, sans-serif",
-  fontWeight: { regular: '400', medium: '500', bold: '700' },
-  fontSize: { display: 32, headline: 24, title: 20, subtitle: 16, body: 14, caption: 12 },
-  lineHeight: { display: 40, headline: 32, title: 28, subtitle: 24, body: 20, caption: 16 }
-};
+import { radii, spacing, typography } from '@/constants/tokens';
 
 const recentlyViewed = [
   {
@@ -83,7 +74,11 @@ const styles = StyleSheet.create({
 const RecentlyViewedSection: React.FC = () => (
   <View style={styles.recentlyViewedSection}>
     <Text style={styles.recentlyViewedTitle}>Recently Viewed</Text>
-    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentlyViewedRow}>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.recentlyViewedRow}
+    >
       {recentlyViewed.map((item) => (
         <RecentlyViewedCard
           key={item.title}
@@ -104,4 +99,4 @@ const RecentlyViewedSection: React.FC = () => (
   </View>
 );
 
-export default RecentlyViewedSection; 
+export default RecentlyViewedSection;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Text, View } from 'react-native';
 
 import type { RecentlyViewedCardProps } from './RecentlyViewedCard.types';
-  
+
 const RecentlyViewedCard: React.FC<RecentlyViewedCardProps> = ({
   image,
   title,
@@ -19,4 +19,4 @@ const RecentlyViewedCard: React.FC<RecentlyViewedCardProps> = ({
   </View>
 );
 
-export default RecentlyViewedCard; 
+export default RecentlyViewedCard;

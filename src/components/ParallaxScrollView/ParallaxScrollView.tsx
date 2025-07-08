@@ -1,4 +1,5 @@
 import type { PropsWithChildren, ReactElement } from 'react';
+import React, { memo } from 'react';
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -13,16 +14,19 @@ import { styles } from './ParallaxScrollView.styles';
 
 const HEADER_HEIGHT = 250;
 
+/**
+ * ParallaxScrollView provides a scrollable view with a parallax header image.
+ *
+ * @param {React.ReactNode} children - The content to display below the header.
+ * @param {React.ReactNode} headerImage - The image to display in the parallax header.
+ * @param {object} headerBackgroundColor - Background color for the header (light/dark).
+ */
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
   headerBackgroundColor: { dark: string; light: string };
 }>;
 
-export default function ParallaxScrollView({
-  children,
-  headerImage,
-  headerBackgroundColor,
-}: Props) {
+const ParallaxScrollViewComponent = ({ children, headerImage, headerBackgroundColor }: Props) => {
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
@@ -34,7 +38,7 @@ export default function ParallaxScrollView({
           translateY: interpolate(
             scrollOffset.value,
             [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75],
           ),
         },
         {
@@ -50,17 +54,22 @@ export default function ParallaxScrollView({
         ref={scrollRef}
         scrollEventThrottle={16}
         scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }}>
+        contentContainerStyle={{ paddingBottom: bottom }}
+      >
         <Animated.View
           style={[
             styles.header,
             { backgroundColor: headerBackgroundColor[colorScheme] },
             headerAnimatedStyle,
-          ]}>
+          ]}
+        >
           {headerImage}
         </Animated.View>
         <ThemedView style={styles.content}>{children}</ThemedView>
       </Animated.ScrollView>
     </ThemedView>
   );
-}
+};
+
+const ParallaxScrollView = memo(ParallaxScrollViewComponent);
+export default ParallaxScrollView;

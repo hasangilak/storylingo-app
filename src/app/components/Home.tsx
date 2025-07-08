@@ -1,37 +1,35 @@
-import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import React, { memo } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
-import FeaturedCard from "@/components/FeaturedCard/FeaturedCard";
-import { Colors } from "@/constants/Colors";
-import CategoriesBar from "../../layouts/CategoriesBar";
-import Header from "../../layouts/Header";
-import RecentlyViewedSection from "../../layouts/RecentlyViewedSection";
+import FeaturedCard from '@/components/FeaturedCard/FeaturedCard';
+import { Colors } from '@/constants/Colors';
+import { radii, spacing } from '@/constants/tokens';
+import CategoriesBar from '@/layouts/CategoriesBar';
+import Header from '@/layouts/Header';
+import RecentlyViewedSection from '@/layouts/RecentlyViewedSection';
 
-const spacing = { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 40 };
-const radii = { none: 0, sm: 4, md: 8, lg: 16, xl: 24, pill: 9999 };
-
-const TABS = ["Novels", "Stories", "Dialogues", "Vocal"];
+const TABS = ['Novels', 'Stories', 'Dialogues', 'Vocal'];
 const featuredCards = [
   {
-    badge: "Popular",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    title: "The Alchemist",
-    meta: ["Novel Summary", "Intermediate"],
-    info: "15 min audio · English - Spanish",
+    badge: 'Popular',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+    title: 'The Alchemist',
+    meta: ['Novel Summary', 'Intermediate'],
+    info: '15 min audio · English - Spanish',
   },
   {
-    badge: "Audio",
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
-    title: "Coffee Shop Conversations",
-    meta: ["Daily Dialogue", "Beginner"],
-    info: "10 min read · New",
+    badge: 'Audio',
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2',
+    title: 'Coffee Shop Conversations',
+    meta: ['Daily Dialogue', 'Beginner'],
+    info: '10 min read · New',
   },
   {
-    badge: "Featured",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-    title: "The Secret Library",
-    meta: ["Mystery", "Advanced"],
-    info: "20 min read · 30% complete",
+    badge: 'Featured',
+    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
+    title: 'The Secret Library',
+    meta: ['Mystery', 'Advanced'],
+    info: '20 min read · 30% complete',
   },
 ];
 
@@ -45,7 +43,7 @@ const viewStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   tabBar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     backgroundColor: Colors.surface,
     borderRadius: radii.lg,
     marginHorizontal: spacing.lg,
@@ -55,7 +53,7 @@ const viewStyles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: spacing.sm,
     borderRadius: radii.md,
   },
@@ -63,11 +61,11 @@ const viewStyles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   tabInactive: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
 });
 
-export default function Home() {
+const HomeComponent = () => {
   const [activeTab, setActiveTab] = React.useState(0);
   return (
     <View style={{ flex: 1 }}>
@@ -76,11 +74,7 @@ export default function Home() {
         contentContainerStyle={[viewStyles.contentContainer, { paddingBottom: 160 }]}
       >
         <Header />
-        <CategoriesBar
-          TABS={TABS}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
+        <CategoriesBar TABS={TABS} activeTab={activeTab} setActiveTab={setActiveTab} />
         {featuredCards.map((card) => (
           <FeaturedCard
             key={card.title}
@@ -95,4 +89,7 @@ export default function Home() {
       </ScrollView>
     </View>
   );
-}
+};
+
+const Home = memo(HomeComponent);
+export default Home;

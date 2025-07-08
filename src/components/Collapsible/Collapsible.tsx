@@ -8,6 +8,12 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { styles } from './Collapsible.styles';
 
+/**
+ * Collapsible component for showing and hiding content with a title.
+ *
+ * @param {string} title - The title of the collapsible section.
+ * @param {React.ReactNode} children - The content to show/hide.
+ */
 export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? 'light';
@@ -15,9 +21,11 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
   return (
     <ThemedView>
       <TouchableOpacity
+        accessibilityRole="button"
         style={styles.heading}
         onPress={() => setIsOpen((value) => !value)}
-        activeOpacity={0.8}>
+        activeOpacity={0.8}
+      >
         <IconSymbol
           name="chevron.right"
           size={18}
@@ -28,8 +36,11 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
 
         <ThemedText type="defaultSemiBold">{title}</ThemedText>
       </TouchableOpacity>
-      {isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
+      {isOpen && (
+        <ThemedView style={styles.content} testID="collapsible-content">
+          {children}
+        </ThemedView>
+      )}
     </ThemedView>
   );
 }
-
